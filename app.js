@@ -38,4 +38,16 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+
+// Set up mongoose connection
+const mongoose = require("mongoose");
+const mongoDB = "mongodb+srv://admin:admin@cluster0.e3co4wr.mongodb.net/?retryWrites=true&w=majority";
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+
+
+
 module.exports = app;
